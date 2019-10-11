@@ -1,1 +1,41 @@
-<p>progress works!</p>
+<!-- Component to manage the bootstrap progress bars -->
+<!-- First card -->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class='card-title'>Progress bar</h4>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+            [attr.ariaValuenow]="percent1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            [style.width]="percent1 + '%'"></div>
+        </div>
+        <br>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+            [attr.ariaValuenow]="percent2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            [style.width]="percent2 + '%'"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Second card -->
+<div class="row">
+
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-booster (valueChanged)="percent1 = $event" legend="Blue progress" [percent]="percent1"></app-booster>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <app-booster (valueChanged)="percent2 = $event" legend="Green progress" [percent]="percent2"></app-booster>
+      </div>
+    </div>
+  </div>
+</div>
