@@ -1,3 +1,5 @@
+/*  Modules and declarations of pages folder and its components */
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -19,6 +21,7 @@ import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-ch
 
 // Temporal
 import { BoosterComponent } from '../components/booster/booster.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 @NgModule({
     declarations: [
@@ -27,9 +30,10 @@ import { BoosterComponent } from '../components/booster/booster.component';
         ProgressComponent,
         Graphs1Component,
         BoosterComponent,
-        DoughnutChartComponent
+        DoughnutChartComponent,
+        AccountSettingsComponent
     ],
-    exports : [
+    exports: [
         PagesComponent,
         DashboardComponent,
         ProgressComponent,
