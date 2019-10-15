@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphs1Component } from './graphs1/graphs1.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
+import { PromisesComponent } from './promises/promises.component';
 
 // Temporal
 import { BoosterComponent } from '../components/booster/booster.component';
@@ -31,7 +32,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         Graphs1Component,
         BoosterComponent,
         DoughnutChartComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromisesComponent
     ],
     exports: [
         PagesComponent,
