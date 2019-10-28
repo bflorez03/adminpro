@@ -1,6 +1,7 @@
 /* Routes of pages module and its components are declared here */
 
 import { Routes, RouterModule } from '@angular/router';
+
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
