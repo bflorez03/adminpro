@@ -5,14 +5,17 @@ import { UserService } from '../services/service.index';
 import { User } from '../models/user.model';
 
 declare function startPlugins();
+declare const gapi: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  email: string;
   rememberMe: boolean = false;
+  auth2: any;
 
   constructor(
     public router: Router,
@@ -21,18 +24,41 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     startPlugins();
+    this.googleInit();
+    this.email = localStorage.getItem('email') || '';
+    if (this.email.length > 1) {
+      this.rememberMe = true;
+    }
+
   }
 
+  // Google singIn functions
+  googleInit() {
+    gapi.load('auth2', () => {
+      this.auth2 = gapi.auth2.init({
+        client_id: '482841113353-sdild5h9saqvr16rlfjnmikkq8nt2pam.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        scope: 'profile email'
+      });
+      this.attachSingIn(document.getElementById('btnGoogle'));
+    });
+  }
+
+  attachSingIn(element) {
+    this.auth2.attachClickHandler(element, {}, googleUser => {
+      // let profile = googleUser.getBasicProfile();
+      const token = googleUser.getAuthResponse().id_token;
+      this._userService.loginByGoogle(token)
+        .subscribe(() => window.location.href = '#/dashboard'); // Router doesn't refresh the page properly
+    });
+  }
+
+  // Normal login by credentials
   login(form: NgForm) {
     if (form.invalid) { return; }
     const user = new User(null, null, form.value.email, form.value.password);
     this._userService.login(user, form.value.rememberMe)
-      .subscribe(res => console.log('Response :', res));
-
-
-    // console.log('Valid: ', form.valid);
-    // console.log('Data: ', form.value);
-    // this.router.navigate(['/dashboard']);
+      .subscribe(() => this.router.navigate(['/dashboard']));
   }
 
 }
