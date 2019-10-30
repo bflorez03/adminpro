@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class PromisesComponent implements OnInit {
 
   constructor() {
-    this.counter().then(
-      message => console.log('Promise end: ', message)
-    ).catch(error => console.error('Promise error:', error));
+    this.counter()
+      .then(message => console.log('Promise end: ', message))
+      .catch(error => console.error('Promise error:', error));
   }
 
   ngOnInit() {
@@ -22,6 +22,7 @@ export class PromisesComponent implements OnInit {
       let interval = setInterval(() => {
         count += 1;
         console.log(count);
+
         if (count === 3) {
           resolve(true);
           // reject('Error occurred!!');

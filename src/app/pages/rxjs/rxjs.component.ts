@@ -38,14 +38,8 @@ export class RxjsComponent implements OnInit, OnDestroy {
       let counter = 0;
       const interval = setInterval(() => {
         counter += 1;
-        const output = {
-          value: counter
-        };
+        const output = { value: counter };
         observer.next(output);
-        // if (counter === 3) {
-        //   clearInterval(interval);
-        //   observer.complete();
-        // }
       }, 1000);
     }).pipe(
       map(resp => resp.value),

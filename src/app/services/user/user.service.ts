@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user.model';
 import { URL_SERVICES } from 'src/app/config/config';
 import { Router } from '@angular/router';
+import { UploadFileService } from '../uploadFile/upload-file.service';
 
 import { map } from 'rxjs/operators';
 import swal from 'sweetalert';
@@ -16,7 +17,8 @@ export class UserService {
 
   constructor(
     public http: HttpClient,
-    public router: Router) {
+    public router: Router,
+    public _uploadFileService: UploadFileService) {
     this.loadStorage();
   }
 
@@ -82,5 +84,27 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
+  }
+
+  // PUT request to update user
+  updateUser(user: User) {
+    const url = URL_SERVICES + '/user/' + user._id + '?token=' + this.token;
+    console.log(url);
+    return this.http.put(url, user)
+      .pipe(map((res: any) => {
+        this.saveLocalStorage(res.id, res.token, res.userSaved);
+        swal('User updated successfully', user.name, 'success');
+        return true;
+      }));
+  }
+
+  // Update user image
+  updateImage(image: File, id: string) {
+    this._uploadFileService.uploadFile(image, 'user', id)
+      .then((res: any) => {
+        this.user.img = res.element.img;
+        swal('Image updated', this.user.name, 'success');
+        this.saveLocalStorage(id, this.token, res.element);
+      }).catch(error => console.log('error: ', error));
   }
 }

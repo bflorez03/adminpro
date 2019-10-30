@@ -9,6 +9,5 @@ import { SettingsService } from './services/setting/settings.service';
 export class AppComponent {
   title = 'adminpro';
 
-  // tslint:disable-next-line: variable-name
   constructor(public _settings: SettingsService) { }
 }

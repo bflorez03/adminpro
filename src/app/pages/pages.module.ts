@@ -7,7 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { PAGES_ROUTES } from './pages.routes';
 
 // Modules
+import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 // ng2-chart
 import { ChartsModule } from 'ng2-charts';
@@ -20,8 +22,8 @@ import { Graphs1Component } from './graphs1/graphs1.component';
 import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-chart.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
-// Temporal
 import { BoosterComponent } from '../components/booster/booster.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
@@ -35,7 +37,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         DoughnutChartComponent,
         AccountSettingsComponent,
         PromisesComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         PagesComponent,
@@ -47,7 +50,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule,
+        CommonModule
     ]
 })
 

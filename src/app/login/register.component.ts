@@ -59,7 +59,9 @@ export class RegisterComponent implements OnInit {
   }
 
   signUpUser() {
-    if (this.registerForm.invalid) { return; }
+    if (this.registerForm.invalid) {
+      return;
+    }
     if (!this.registerForm.value.terms) {
       swal('Important', 'Have to accept the terms of conditions', 'warning');
       return;

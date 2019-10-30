@@ -9,7 +9,6 @@ import { SettingsService } from 'src/app/services/service.index';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  // tslint:disable-next-line: variable-name
   constructor(public _settings: SettingsService) { }
 
   ngOnInit() {
@@ -22,9 +21,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   applyCheck(link: any) {
-    // tslint:disable-next-line: prefer-const
-    let selectors: any = document.getElementsByClassName('selector');
-    // tslint:disable-next-line: prefer-const
+    const selectors: any = document.getElementsByClassName('selector');
     for (let selector of selectors) {
       selector.classList.remove('working');
     }
@@ -32,7 +29,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   putCheck() {
-    let selectors: any = document.getElementsByClassName('selector');
+    const selectors: any = document.getElementsByClassName('selector');
     for (let selector of selectors) {
       if (selector.getAttribute('data-theme') === this._settings.settings.theme) {
         selector.classList.add('working');
