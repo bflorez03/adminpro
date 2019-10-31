@@ -11,6 +11,7 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
 
 const pagesRoutes: Routes = [
     {
@@ -25,6 +26,9 @@ const pagesRoutes: Routes = [
             { path: 'graphs1', component: Graphs1Component, data: { title: 'Graphs' } },
             { path: 'promises', component: PromisesComponent, data: { title: 'Promises' } },
             { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' } },
+
+            // Maintenance
+            { path: 'users', component: UserComponent, data: { title: 'Users maintenance' } },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
         ]
     }

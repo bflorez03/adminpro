@@ -28,9 +28,8 @@ export class ProfileComponent implements OnInit {
       this.user.email = user.email;
     }
     this.user.name = user.name;
-    this._userService.updateUser(this.user).subscribe(res => {
-      console.log(res);
-    });
+    this._userService.updateUser(this.user)
+      .subscribe(res => console.log(res));
   }
 
   selectImage(imageFile: File) {
@@ -48,13 +47,13 @@ export class ProfileComponent implements OnInit {
     this.imageToUpload = imageFile;
   }
 
-  uploadImage() {
-    this._userService.updateImage(this.imageToUpload, this.user._id);
-  }
+  // Update image on the backend
+  uploadImage = () => this._userService.updateImage(this.imageToUpload, this.user._id);
 
+  // Update and show imageTemp on the frontend
   updateImageTemp(imageFile: File) {
-    let reader = new FileReader();
-    let urlImageTemp = reader.readAsDataURL(imageFile);
-    reader.onloadend = () => this.imageTemp = reader.result;
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onloadend = () => this.imageTemp = reader.result as string;
   }
 }

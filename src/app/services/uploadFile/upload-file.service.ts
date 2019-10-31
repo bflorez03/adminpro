@@ -9,15 +9,17 @@ export class UploadFileService {
   constructor() { }
 
   uploadFile(file: File, type: string, id: string) {
-    return new Promise((resolve, reject) => {
-      const formData = new FormData();
-      const xhr = new XMLHttpRequest();
-      formData.append('image', file, file.name);
+    const formData = new FormData();
+    const xhr = new XMLHttpRequest();
+    const url = URL_SERVICES + '/update/' + type + '/' + id;
 
+    return new Promise((resolve, reject) => {
+      formData.append('image', file, file.name);
+      xhr.open('PUT', url, true);
+      xhr.send(formData);
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            console.log('Image uploaded');
             resolve(JSON.parse(xhr.response));
           } else {
             console.log('Error uploading image');
@@ -25,11 +27,6 @@ export class UploadFileService {
           }
         }
       };
-
-      const url = URL_SERVICES + '/update/' + type + '/' + id;
-      xhr.open('PUT', url, true);
-      xhr.send(formData);
     });
-
   }
 }

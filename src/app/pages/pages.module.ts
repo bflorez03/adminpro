@@ -26,6 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { BoosterComponent } from '../components/booster/booster.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         AccountSettingsComponent,
         PromisesComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        UserComponent
     ],
     exports: [
         PagesComponent,

@@ -7,8 +7,8 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
 import { RegisterComponent } from './login/register.component';
 
 const appRoute: Routes = [
-    { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
 

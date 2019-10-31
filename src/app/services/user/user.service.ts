@@ -107,4 +107,18 @@ export class UserService {
         this.saveLocalStorage(id, this.token, res.element);
       }).catch(error => console.log('error: ', error));
   }
+
+  // Get users from DB
+  getUsers(from: number = 0) {
+    const url = URL_SERVICES + '/user?from=' + from;
+    return this.http.get(url);
+
+  }
+
+  // Get users by keyword
+  getUsersByKeyword(keyword: string) {
+    const url = URL_SERVICES + '/search/collection/user/' + keyword;
+    return this.http.get(url)
+      .pipe(map((res: any) => res.user));
+  }
 }
