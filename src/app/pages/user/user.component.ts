@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from 'src/app/services/service.index';
+// import * from 'sweetalert';
+import { ModalUploadService } from '../../components/modal-upload/modal-upload.service';
 
+declare var swal: any;
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -13,7 +16,8 @@ export class UserComponent implements OnInit {
   totalUsers: number;
   load: boolean;
 
-  constructor(public _userService: UserService) {
+  constructor(public _userService: UserService,
+    public _modalUploadService: ModalUploadService) {
     this.usersFrom = 0;
     this.totalUsers = 0;
     this.load = true;
@@ -21,6 +25,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.getTableUsers();
+    this._modalUploadService.emitter
+      .subscribe(res => this.getTableUsers());
   }
 
   getTableUsers() {
@@ -61,5 +67,50 @@ export class UserComponent implements OnInit {
       });
   }
 
+  // Delete an user from the table
+  // It's not possible delete the logged user
+  deleteUser(user: User) {
+    if (user._id === this._userService.user._id) {
+      swal('Error deleting user', 'It\'s not possible to delete your own user', 'error');
+      return;
+    }
+
+    swal({
+      title: 'Are you sure?',
+      text: 'You will delete user ' + user.name,
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+      .then(willDelete => {
+        if (willDelete) {
+          this._userService.deleteUser(user._id)
+            .subscribe((userDeleted: User) => {
+              swal('User: ' + userDeleted.name + ' has been deleted!', {
+                icon: 'success',
+              });
+              this.getTableUsers();
+            });
+        }
+      });
+
+  }
+  // Update user information
+  saveUser(user: User) {
+    swal({
+      title: 'Are you sure?',
+      text: 'You will update info of user ' + user.name,
+      icon: 'warning',
+      buttons: true
+    })
+      .then(update => {
+        if (update) {
+          this._userService.updateUser(user)
+            .subscribe(() => this.getTableUsers());
+        }
+      });
+  }
+
+  callModalUpload = (user: User) => this._modalUploadService.showModal(user._id, 'user');
 
 }

@@ -22,20 +22,23 @@ export class UserService {
     this.loadStorage();
   }
 
+  
+  // Check token to know if there is a user logged
+  isLogged = () => (this.token.length > 3) ? true : false;
+  
   // Check if there is data in the storage and load it
   loadStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
+      console.log('token');
     } else {
       this.token = '';
       this.user = null;
+      console.log('no token');
     }
   }
-
-  // Check token to know if there is a user logged
-  isLogged = () => (this.token.length > 3) ? true : false;
-
+  
   // Function to save logged user into local storage
   saveLocalStorage(id: string, token: string, user: User) {
     localStorage.setItem('id', id);
@@ -89,11 +92,12 @@ export class UserService {
   // PUT request to update user
   updateUser(user: User) {
     const url = URL_SERVICES + '/user/' + user._id + '?token=' + this.token;
-    console.log(url);
     return this.http.put(url, user)
       .pipe(map((res: any) => {
-        this.saveLocalStorage(res.id, res.token, res.userSaved);
-        swal('User updated successfully', user.name, 'success');
+        if (user._id === this.user._id) {
+          this.saveLocalStorage(res.id, res.token, res.userSaved);
+        }
+        swal('User updated', user.name, 'success');
         return true;
       }));
   }
@@ -112,7 +116,6 @@ export class UserService {
   getUsers(from: number = 0) {
     const url = URL_SERVICES + '/user?from=' + from;
     return this.http.get(url);
-
   }
 
   // Get users by keyword
@@ -121,4 +124,12 @@ export class UserService {
     return this.http.get(url)
       .pipe(map((res: any) => res.user));
   }
+
+  // Delete user by user id
+  deleteUser(userID: string) {
+    const url = URL_SERVICES + '/user/' + userID + '?token=' + this.token;
+    return this.http.delete(url)
+      .pipe(map((res: any) => res.userDeleted));
+  }
+
 }

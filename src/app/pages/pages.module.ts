@@ -23,6 +23,7 @@ import { DoughnutChartComponent } from '../components/doughnut-chart/doughnut-ch
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 import { BoosterComponent } from '../components/booster/booster.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -40,7 +41,8 @@ import { UserComponent } from './user/user.component';
         PromisesComponent,
         RxjsComponent,
         ProfileComponent,
-        UserComponent
+        UserComponent,
+        ModalUploadComponent
     ],
     exports: [
         PagesComponent,

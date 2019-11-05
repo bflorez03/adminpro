@@ -19,7 +19,8 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.2",
+    "g": "^2.0.1",
     "ng2-charts": "^2.3.0",
     "rxjs": "^6.4.0",
     "sweetalert": "^2.1.2",
@@ -31,10 +32,10 @@
     "@angular/cli": "~8.0.2",
     "@angular/compiler-cli": "~8.0.0",
     "@angular/language-service": "~8.0.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "^5.0.0",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -45,6 +46,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "^3.4.5",
+    "typescript-tslint-plugin": "^0.5.4"
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { UserService } from '../../services/service.index';
 import { User } from '../../models/user.model';
 
@@ -14,5 +14,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.user = this._userService.user;
   }
-
 }

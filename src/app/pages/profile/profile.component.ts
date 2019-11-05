@@ -48,7 +48,9 @@ export class ProfileComponent implements OnInit {
   }
 
   // Update image on the backend
-  uploadImage = () => this._userService.updateImage(this.imageToUpload, this.user._id);
+  uploadImage() {
+    this._userService.updateImage(this.imageToUpload, this.user._id);
+  }
 
   // Update and show imageTemp on the frontend
   updateImageTemp(imageFile: File) {
