@@ -95,6 +95,7 @@ export class UserComponent implements OnInit {
       });
 
   }
+
   // Update user information
   saveUser(user: User) {
     swal({
@@ -111,6 +112,8 @@ export class UserComponent implements OnInit {
       });
   }
 
-  callModalUpload = (user: User) => this._modalUploadService.showModal(user._id, 'user');
-
+  // Call Modal to update user picture
+  callModalUpload(user: User) {
+    this._modalUploadService.showModal(user._id, 'user');
+  }
 }

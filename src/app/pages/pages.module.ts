@@ -24,10 +24,12 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { HospitalComponent } from './hospital/hospital.component';
 
 import { BoosterComponent } from '../components/booster/booster.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { UserComponent } from './user/user.component';
+import { DoctorComponent } from './doctor/doctor/doctor.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,9 @@ import { UserComponent } from './user/user.component';
         RxjsComponent,
         ProfileComponent,
         UserComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        HospitalComponent,
+        DoctorComponent
     ],
     exports: [
         PagesComponent,

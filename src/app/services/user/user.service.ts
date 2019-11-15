@@ -31,11 +31,9 @@ export class UserService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
-      console.log('token');
     } else {
       this.token = '';
       this.user = null;
-      console.log('no token');
     }
   }
   
@@ -53,7 +51,7 @@ export class UserService {
     // POST method need a object as a body, and token is string for that reason {token}
     return this.http.post(URL_SERVICES + '/login/google', { token })
       .pipe(map((res: any) => {
-        this.saveLocalStorage(res.id, res.token, res.userSaved);
+        this.saveLocalStorage(res.id, res.token, res.elementSaved);
         return true;
       }));
   }
@@ -66,7 +64,7 @@ export class UserService {
 
     return this.http.post(URL_SERVICES + '/login', user)
       .pipe(map((res: any) => {
-        this.saveLocalStorage(res.id, res.token, res.userSaved);
+        this.saveLocalStorage(res.id, res.token, res.elementSaved);
         return true;
       }));
   }
@@ -76,7 +74,7 @@ export class UserService {
     return this.http.post(URL_SERVICES + '/user', user)
       .pipe(map((res: any) => {
         swal('User created', user.email, 'success');
-        return res.user;
+        return res.elementCreated;
       }));
   }
 
@@ -95,7 +93,7 @@ export class UserService {
     return this.http.put(url, user)
       .pipe(map((res: any) => {
         if (user._id === this.user._id) {
-          this.saveLocalStorage(res.id, res.token, res.userSaved);
+          this.saveLocalStorage(res.id, res.token, res.elementSaved);
         }
         swal('User updated', user.name, 'success');
         return true;
@@ -129,7 +127,7 @@ export class UserService {
   deleteUser(userID: string) {
     const url = URL_SERVICES + '/user/' + userID + '?token=' + this.token;
     return this.http.delete(url)
-      .pipe(map((res: any) => res.userDeleted));
+      .pipe(map((res: any) => res.elementDeleted));
   }
 
 }
