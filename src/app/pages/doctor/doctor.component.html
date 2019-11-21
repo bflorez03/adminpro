@@ -1,0 +1,54 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <div class="card card-body">
+      <h3 class="box-title m-b-0" *ngIf="doctor.name; else newDoctor">
+        Doctor: {{doctor.name}}
+      </h3>
+      <ng-template #newDoctor>
+        New doctor
+      </ng-template>
+      
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <form #f="ngForm" ngNativeValidate (ngSubmit)="saveDoctor(f)">
+            <div class="form-group">
+              <label>Doctor's name</label>
+              <input [(ngModel)]="doctor.name" name="name" type="text" class="form-control" placeholder="Doctor's name">
+            </div>
+            <div class="form-group">
+              <label>Hospital</label>
+              <select (change)="hospitalChange($event.target.value)" [(ngModel)]="doctor.hospital" name="hospital"
+                class="form-control" required>
+                <option value="">Select hospital</option>
+                <option *ngFor="let hospital of hospitals" [value]="hospital._id">
+                  {{hospital.name}}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+              <i class="fa fa-save"></i>
+              Save
+            </button>
+            <a [routerLink]="['/doctors']" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card card-body">
+      <h4 class="box-title m-b-0">Hospital</h4>
+      <br>
+      <img class="rounded img-fluid" [src]="hospital.img | image: 'hospital'">
+    </div>
+  </div>
+
+  <div class="col-md-3" *ngIf="doctor._id">
+    <div class="card card-body">
+      <h4 class="box-title m-b-0">Doctor's picture</h4>
+      <br>
+      <img (click)="updatePicture()" class="img-circle img-fluid pointer" [src]="doctor.img | image:'doctor'">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="searchDoctor(input.value)" type="text" class="form-control" placeholder="Search doctor">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="load">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center">
+      <strong>Loading</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Wait, please</span>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!load">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button [routerLink]="['/doctor', 'new']" type="button"
+            class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus-circle"></i>
+            Create doctor
+          </button>
+        </div>
+
+        <h3 class="card-title">Doctors registered (<small>{{_doctorService.totalDoctors}}</small>)</h3>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Hospital</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let doctor of doctors">
+              <td class="w70">
+                <img [src]="doctor.img | image:'doctor'" class="img-50 img-circle">
+              </td>
+              <td>{{doctor.name}}</td>
+
+              <td *ngIf="doctor.hospital;else noHospital">
+                {{doctor.hospital.name}}
+              </td>
+              <ng-template #noHospital>
+                <i>No hospital</i>
+              </ng-template>
+
+              <td>
+                <button [routerLink]="['/doctor', doctor._id]"
+                  class="btn btn-primary btn-circle btn-space">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="btn btn-danger btn-circle" (click)="deleteDoctor(doctor)">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="getDoctorsFrom(-5)" class="btn btn-secondary ">
+          Preview
+        </button>
+        <button (click)="getDoctorsFrom(5)" class="btn btn-secondary ">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

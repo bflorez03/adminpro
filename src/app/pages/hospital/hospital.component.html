@@ -28,7 +28,7 @@
     <div class="card">
       <div class="card-body">
         <div class="text-right">
-          <button (click)="createHospital()" class="btn btn-primary btn-rounded">
+          <button (click)="createHospital()" type="button" class="btn waves-effect waves-light btn-primary btn-rounded">
             <i class="fa fa-plus-circle"></i>
             Create hospital
           </button>
@@ -48,7 +48,8 @@
           <tbody>
             <tr *ngFor="let hospital of hospitals">
               <td class="w70">
-                <img class="img-50 img-circle pointer" [src]="hospital.img | image: 'hospital'" (click)="callModalUpload(hospital)">
+                <img class="img-50 img-circle pointer" [src]="hospital.img | image: 'hospital'"
+                  (click)="callModalUpload(hospital)">
               </td>
               <td>
                 <input #input [(ngModel)]="hospital.name" type="text" class="form-control"

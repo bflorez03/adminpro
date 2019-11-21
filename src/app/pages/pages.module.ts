@@ -29,7 +29,8 @@ import { HospitalComponent } from './hospital/hospital.component';
 import { BoosterComponent } from '../components/booster/booster.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { UserComponent } from './user/user.component';
-import { DoctorComponent } from './doctor/doctor/doctor.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorsComponent } from './doctor/doctors.component';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { DoctorComponent } from './doctor/doctor/doctor.component';
         UserComponent,
         ModalUploadComponent,
         HospitalComponent,
-        DoctorComponent
+        DoctorComponent,
+        DoctorsComponent
     ],
     exports: [
         PagesComponent,

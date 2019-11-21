@@ -10,7 +10,8 @@ import {
   UserService,
   LoginGuardGuard,
   UploadFileService,
-  HospitalService
+  HospitalService,
+  DoctorService
 } from './service.index';
 
 @NgModule({
@@ -27,7 +28,8 @@ import {
     LoginGuardGuard,
     UploadFileService,
     ModalUploadService,
-    HospitalService
+    HospitalService,
+    DoctorService
   ]
 })
 export class ServiceModule { }
