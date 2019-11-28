@@ -31,6 +31,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { UserComponent } from './user/user.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorsComponent } from './doctor/doctors.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { DoctorsComponent } from './doctor/doctors.component';
         ModalUploadComponent,
         HospitalComponent,
         DoctorComponent,
-        DoctorsComponent
+        DoctorsComponent,
+        SearchComponent
     ],
     exports: [
         PagesComponent,

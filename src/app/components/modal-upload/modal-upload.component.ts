@@ -50,7 +50,7 @@ export class ModalUploadComponent implements OnInit {
         if (res.element._id === this._userService.user._id) {
           this._userService.user.img = res.element.img;
           this._userService.saveLocalStorage(res.element._id,
-            this._userService.token, res.element);
+            this._userService.token, res.element, this._userService.menu);
         }
         swal('Picture updated', res.element.name, 'success');
         this._modalUploadService.emitter.emit(res);

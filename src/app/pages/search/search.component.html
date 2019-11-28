@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Users</h4>
+        <table class="table table-hover" *ngIf="users.length > 0;else noUsers">
+          <tr *ngFor="let user of users" [routerLink]="['/users']" class="pointer">
+            <td class="w70">
+              <img [src]="user.img | image" class="img-50 img-circle">
+            </td>
+            <td>{{user.name}}</td>
+          </tr>
+        </table>
+        <!-- Else template -->
+        <ng-template #noUsers>
+          <i>No users found by "{{keyword}}"</i>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Doctors</h4>
+        <table class="table table-hover" *ngIf="doctors.length > 0; else noDoctors">
+          <tr *ngFor="let doctor of doctors" [routerLink]="['/doctor', doctor._id]" class="pointer">
+            <td class="w70">
+              <img [src]="doctor.img | image" class="img-50 img-circle">
+            </td>
+            <td>{{doctor.name}}</td>
+          </tr>
+        </table>
+        <!-- Else template -->
+        <ng-template #noDoctors>
+          <i>No doctors found "{{keyword}}"</i>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Hospitals</h4>
+        <table class="table table-hover" *ngIf="hospitals.length > 0; else noHospitals">
+          <tr *ngFor="let hospital of hospitals" [routerLink]="['/hospitals']" class="pointer">
+            <td class="w70">
+              <img [src]="hospital.img | image" class="img-50 img-circle">
+            </td>
+            <td>{{hospital.name}}</td>
+          </tr>
+        </table>
+        <!-- Else template -->
+        <ng-template #noHospitals>
+          <i>No hospitals found "{{keyword}}"</i>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+</div>
