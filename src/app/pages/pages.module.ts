@@ -15,7 +15,6 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ChartsModule } from 'ng2-charts';
 
 // Components
-import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphs1Component } from './graphs1/graphs1.component';
@@ -34,38 +33,35 @@ import { DoctorsComponent } from './doctor/doctors.component';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
-    declarations: [
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graphs1Component,
-        BoosterComponent,
-        DoughnutChartComponent,
-        AccountSettingsComponent,
-        PromisesComponent,
-        RxjsComponent,
-        ProfileComponent,
-        UserComponent,
-        ModalUploadComponent,
-        HospitalComponent,
-        DoctorComponent,
-        DoctorsComponent,
-        SearchComponent
-    ],
-    exports: [
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graphs1Component
-    ],
-    imports: [
-        SharedModule,
-        PAGES_ROUTES,
-        FormsModule,
-        ChartsModule,
-        PipesModule,
-        CommonModule
-    ]
+  declarations: [
+    DashboardComponent,
+    ProgressComponent,
+    Graphs1Component,
+    BoosterComponent,
+    DoughnutChartComponent,
+    AccountSettingsComponent,
+    PromisesComponent,
+    RxjsComponent,
+    ProfileComponent,
+    UserComponent,
+    HospitalComponent,
+    DoctorComponent,
+    DoctorsComponent,
+    SearchComponent
+  ],
+  exports: [
+    DashboardComponent,
+    ProgressComponent,
+    Graphs1Component
+  ],
+  imports: [
+    SharedModule,
+    PAGES_ROUTES,
+    FormsModule,
+    ChartsModule,
+    PipesModule,
+    CommonModule
+  ]
 })
 
 export class PagesModule { }

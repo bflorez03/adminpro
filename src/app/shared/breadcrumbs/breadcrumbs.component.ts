@@ -12,7 +12,10 @@ export class BreadcrumbsComponent implements OnInit {
 
   compTitle: string;
 
-  constructor(private router: Router, private webTitle: Title, private meta: Meta) {
+  constructor(
+    private router: Router,
+    private webTitle: Title,
+    private meta: Meta) {
     this.getDataRow().subscribe(data => {
       this.compTitle = data.title;
       this.webTitle.setTitle(data.title);

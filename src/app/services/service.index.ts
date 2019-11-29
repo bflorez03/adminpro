@@ -1,6 +1,7 @@
 /* File to export all services in this folder
 it useful to move the services file between folders without rename paths */
 
+export { CheckTokenGuard } from './guards/check-token.guard';
 export { AdminGuard } from './guards/admin.guard';
 export { DoctorService } from './doctor/doctor.service';
 export { HospitalService } from './hospital/hospital.service';

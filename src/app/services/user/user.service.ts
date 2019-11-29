@@ -64,6 +64,23 @@ export class UserService {
     this.menu = menu
   }
 
+  renewToken() {
+    const url = URL_SERVICES + '/login/renewToken?token=' + this.token
+    return this.http.get(url)
+      .pipe(
+        map((res: any) => {
+          this.token = res.token
+          localStorage.setItem('token', res.token)
+          return true
+        }),
+        catchError(err => {
+          swal('Error renewing token!', 'It was not possible to renew the token ', 'error')
+          this.router.navigate(['/login'])
+          return throwError(err);
+        })
+      )
+  }
+
   // POST request to do login with a google account
   loginByGoogle(token: string) {
     // POST method need a object as a body, and token is string for that reason {token}
@@ -108,7 +125,6 @@ export class UserService {
           swal('User created', user.email, 'success');
           return res.elementCreated;
         }), catchError(err => {
-          console.log(err);
           swal('Error', err.error.errors.message, 'error')
           return throwError(err);
         })

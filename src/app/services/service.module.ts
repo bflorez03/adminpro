@@ -12,7 +12,8 @@ import {
   HospitalService,
   DoctorService,
   LoginGuardGuard,
-  AdminGuard
+  AdminGuard,
+  CheckTokenGuard
 } from './service.index';
 
 @NgModule({
@@ -31,7 +32,8 @@ import {
     HospitalService,
     DoctorService,
     LoginGuardGuard,
-    AdminGuard
+    AdminGuard,
+    CheckTokenGuard
   ]
 })
 export class ServiceModule { }

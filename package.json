@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
-    "chart.js": "^2.9.2",
+    "chart.js": "^2.9.3",
     "g": "^2.0.1",
     "ng2-charts": "^2.3.0",
     "rxjs": "^6.4.0",
@@ -47,6 +47,6 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "^3.4.5",
-    "typescript-tslint-plugin": "^0.5.4"
+    "typescript-tslint-plugin": "^0.5.5"
   }
 }
